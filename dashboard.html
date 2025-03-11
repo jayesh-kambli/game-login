@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow p-4 d-flex flex-direction-row" id="listSorter">
+            <p id="whitelistStatus" class="m-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle"
+                    viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                </svg>
+                Checking whitelist status...
+            </p>
+        </div>
+        <div class="card shadow p-4 mt-3 d-flex flex-direction-row" id="DeviceBg">
+            <p id="DeviceStatus" class="m-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle"
+                    viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                </svg>
+                Verifing Device.....
+            </p>
+        </div>
+        <div class="card shadow p-4 mt-3 loggedIn">
+            <h2 class="mb-4">Java Edition Ip</h2>
+            <div class="row">
+                <div class="col-sm-12 col-md-8 mt-1">
+                    <input type="text" class="form-control w-100 me-2" id="serverIPJava"
+                        value="sigmasmp.zapto.org:25565" readonly>
+                </div>
+                <div class="col-sm-12 col-md-4 mt-1">
+                    <button class="btn btn-primary" onclick="copyIP()">Copy IP</button>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow p-4 mt-3 loggedIn">
+            <h2 class="mb-4">Pocket Edition Ip</h2>
+            <div class="row">
+                <div class="col-sm-12 col-md-4 mt-1">
+                    <input type="text" class="form-control w-100 me-2" id="serverIPBedrock" value="sigmasmp.zapto.org"
+                        readonly>
+                </div>
+                <div class="col-sm-12 col-md-4 mt-1">
+                    <input type="text" class="form-control w-100 me-2" id="serverIPBedrockPort" value="19132" readonly>
+                </div>
+                <div class="col-sm-12 col-md-3 mt-1">
+                    <button class="btn btn-primary" onclick="copyIP2()">Copy IP</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card shadow p-4 mt-3 loggedIn">
+            <p>
+                1️⃣ Device Registration<br>
+                After logging in, your device will be registered automatically.
+                This step is needed to keep your account safe.
+            </p>
+            <p>
+                2️⃣ Enter the Game<br>
+                Now, open Minecraft and join Sigma SMP as usual.
+            </p>
+            <p>
+                🔄 Repeat These Steps Every Time You Play
+                <br>
+                You must log in on the website before joining the game.
+                This ensures only you can access your account.
+            </p>
+        </div>
+
+        <div class="card shadow p-4 mt-3 loggedIn">
+            <a href="https://discord.gg/4ScChuJEYv" class="w-100">
+                <button type="button" class="btn btn-primary btn-lg w-100"
+                    style="background-color: #5865F2; border: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-discord" viewBox="0 0 16 16">
+                        <path
+                            d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612" />
+                    </svg>
+                    Join Discord</button></a>
+
+            <button id="logout" type="button" class="btn btn-primary btn-lg w-100 mt-2"
+                style="background-color: #ff0000; border: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                    <path fill-rule="evenodd"
+                        d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                </svg>
+                Logout</button>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Copy to Clipboard Script -->
+    <script>
+        function copyIP() {
+            var ipField = document.getElementById("serverIPJava");
+            ipField.select();
+            ipField.setSelectionRange(0, 99999); // For mobile support
+            navigator.clipboard.writeText(ipField.value);
+            alert("Copied: " + ipField.value);
+        }
+
+        function copyIP2() {
+            var ipField = document.getElementById("serverIPBedrock");
+            ipField.select();
+            ipField.setSelectionRange(0, 99999); // For mobile support
+            navigator.clipboard.writeText(ipField.value);
+            alert("Copied: " + ipField.value);
+        }
+
+        function updateDashboard(clientIp) {
+            fetch('./dashboard.php', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ip: clientIp }) // Send IP to backend
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        alert(data.message);
+                        window.location.href = "index.html"; // Redirect if not logged in
+                        return;
+                    }
+
+                    let statusText = data.whitelisted ? "You are whitelisted!" : "Not whitelisted! Contact Admin.";
+                    let mainColor = data.whitelisted ? "green" : "red";
+                    let logo = data.whitelisted ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>` : `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>`;
+
+                    document.getElementById("listSorter").style.backgroundColor = mainColor;
+                    document.getElementById("whitelistStatus").innerHTML = logo + " " + statusText;
+
+                    if (data.ip_updated) {
+                        setTimeout(() => {
+                            console.log("This runs after 2 seconds!");
+                            document.getElementById("DeviceStatus").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                </svg>  Device Verified`;
+                            document.getElementById("DeviceBg").style.backgroundColor = "green";
+                        }, 800);
+                    }
+                })
+                .catch(error => console.error('Error fetching whitelist status:', error));
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            fetch('https://api.ipify.org?format=json') // Fetch public IP from ipify API
+                .then(response => response.json())
+                .then(data => {
+                    let clientIp = data.ip; // Get client's actual public IP
+                    updateDashboard(clientIp);
+                })
+                .catch(error => console.error("Failed to fetch IP:", error));
+
+
+
+            document.getElementById("logout").addEventListener("click", () => {
+                console.log("Logout clicked"); // Debugging log
+                fetch('./logout.php')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Server error: " + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            sessionStorage.removeItem("loggedIn"); // Clear session storage
+                            window.location.href = "./index.html"; // Redirect to login page
+                            console.log("Run: Logout successful!");
+                        } else {
+                            console.error("Logout failed:", data.message);
+                            alert("Logout failed: " + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Logout Error:", error);
+                        alert("Logout failed. Server not reachable.");
+                    });
+            });
+
+
+        });
+
+        function logout() {
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
